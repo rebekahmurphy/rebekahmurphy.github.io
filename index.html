@@ -32,7 +32,38 @@
  
 <h1>The Straight Line is Godless</h1>
 <h2>Rebekah's blog while in Mo'orea, partially at <a href="https://www.moorea.berkeley.edu/">Gump Station</a></h2>
-<img src="https://i.imgur.com/v0UsKJv.jpeg" alt="this will show up if it didn't work" style="display: block; margin: 2rem auto; max-width: 50%; height: auto;">
+    
+<div style="max-width: 800px; margin: 2rem auto; text-align: center;">
+    <div id="carousel" style="position: relative; overflow: hidden;">
+        <img src="https://i.imgur.com/Hp7x1jQ.jpeg alt="Photo 1" class="carousel-img" style="width: 40%; display: block;">
+        <img src="https://i.imgur.com/8FndmwI.jpeg" alt="Photo 2" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/Xty0BkO.jpeg" alt="Photo 3" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/QukdMDC.jpeg" alt="Photo 4" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/GA3GvzR.jpeg" alt="Photo 5" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/WbHFQCN.jpeg" alt="Photo 6" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/KYIXnxa.jpeg" alt="Photo 7" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/J8GoKAf.jpeg" alt="Photo 8" class="carousel-img" style="width: 40%; display: none;">
+        <img src="https://i.imgur.com/PQOiwiv.jpeg" alt="Photo 9" class="carousel-img" style="width: 40%; display: none;">
+    </div>
+    
+    <button onclick="changeSlide(-1)" style="margin: 1rem 0.5rem; padding: 0.5rem 1rem; cursor: pointer;">← Previous</button>
+    <span id="slideCounter" style="margin: 0 1rem;">1 / 9</span>
+    <button onclick="changeSlide(1)" style="margin: 1rem 0.5rem; padding: 0.5rem 1rem; cursor: pointer;">Next →</button>
+</div>
+
+<script>
+let currentSlide = 0;
+const images = document.querySelectorAll('.carousel-img');
+
+function changeSlide(direction) {
+    images[currentSlide].style.display = 'none';
+    currentSlide = (currentSlide + direction + images.length) % images.length;
+    images[currentSlide].style.display = 'block';
+    document.getElementById('slideCounter').textContent = (currentSlide + 1) + ' / 9';
+}
+</script>
+
+    
 <h5> Sidenote, but important: Nov 4, 2018, Maggie Rogers performed <a href="https://www.youtube.com/watch?v=MrO5GTVdc-Q">Fallingwater</a> on SNL. I love this performance, not only for her powerful voice, but also in the way that she seems to be so lost in her music that she forgets she is on stage.</h5>
 <h3> Writings begin here...</h3>
 <p><a href="reflections.html">Reflections before the adventure begins: Sunday, January 18, 2026</a></p>
