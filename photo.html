@@ -3,91 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Photo Gallery of Mo'orea </title>
+    <title> Photos from Mo'orea</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Times New Roman', Times, serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
             color: #333;
+            background: white;
         }
-        h1 {
+        a { color: #2c3e50; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Fixed page chrome — stays put while photos travel. */
+        .chrome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 2rem;
+            z-index: 100;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0));
+        }
+        .chrome h1 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin: 0;
+        }
+        .chrome a {
+            pointer-events: auto;
+            font-size: 0.9rem;
+        }
+        .hint {
+            position: fixed;
+            bottom: 1.2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #999;
+            z-index: 100;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        /* The fixed stage the photos move through. */
+        .stage {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+        }
+        .stage a {
+            position: absolute;
+            display: block;
+            will-change: transform, opacity;
+            opacity: 0;
+            z-index: 1;
+        }
+        .stage img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* A drifting line from the post — quiet divider and doorway in one. */
+        .fragment {
+            left: 12%;
+            width: 76%;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #777;
+            z-index: 20;
+        }
+        .fragment:hover {
             color: #2c3e50;
         }
-        a {
-            color: #2c3e50;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+
+        /* Invisible spacer that gives the page its scroll length. */
+        .track { width: 1px; }
     </style>
 </head>
 <body>
-    <a href="index.html">← Back to Home</a>
-    
-    <h1> Photo Gallery of Mo'orea </h1>
-    <p> Most of these photos are from various phones, although the very beautiful film photos are from a talented photographer on our trip, Maya Breckenridge. </p>
-<div style="max-width: 600px; margin: 2rem auto; text-align: center;">
-    <div id="carousel" style="position: relative; overflow: hidden;">
-        <img src="https://i.imgur.com/V1veGDo.jpeg" class="carousel-img" style="width: 100%; display: block;">
-        <img src="https://i.imgur.com/0lES958.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/NWdOO6q.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/IwJLeW0.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/pUlSilb.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/VMz3GoW.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/zvELYbW.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/cB2WfsH.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/AJBmAIP.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/BYePu9P.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/t1iWiqL.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/4RuxhtB.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/Gv8UsgK.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/4EauFwl.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/L0Z7m5s.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/UFEQ5VP.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/O7UpHTp.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/92no83f.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/op9AjvQ.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/1anuyBP.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/6OhT4zj.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/Ot00RoD.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/SyVq2mg.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/n3ZBPoz.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/lb1KWX2.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/zwAC01u.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/qtZIc5h.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/T8qXt2o.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/Tubp78s.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/9shTtTa.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/UItMb8k.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/4fL5Xmf.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/cw4s5Bn.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/7tRTp3L.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/a6Hy0Km.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/1LBHJEP.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/2fqSF7X.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/WreYGRg.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/gETr4YL.jpeg" class="carousel-img" style="width: 100%; display: none;">
-        <img src="https://i.imgur.com/7l67UyO.jpeg" class="carousel-img" style="width: 100%; display: none;">
+    <div class="chrome">
+        <h1>Gallery</h1>
+        <a href="index.html">&larr; back home</a>
     </div>
+    <div class="hint" id="hint">scroll &mdash; the photos will come to you</div>
 
-    <button onclick="changeSlide(-1)" style="margin: 1rem 0.5rem; padding: 0.5rem 1rem; cursor: pointer;">← Previous</button>
-    <span id="slideCounter" style="margin: 0 1rem;">1 / 40</span>
-    <button onclick="changeSlide(1)" style="margin: 1rem 0.5rem; padding: 0.5rem 1rem; cursor: pointer;">Next →</button>
-</div>
+    <div class="stage" id="stage"></div>
+    <div class="track" id="track"></div>
 
-<script>
-let currentSlide = 0;
-const images = document.querySelectorAll('.carousel-img');
-const total = images.length;
+    <script>
+        // Groups in the order they appear on the index page.
+        // Each group opens with a drifting line from its post, which links to it.
+        // Deep links work too: gallery.html#eels scrolls straight to that group.
+        var groups = [
+            {
+                id: "firstweek",
+                href: "firstweek.html",
+                fragment: "The science we learn is nothing without the poets alongside us.",
+                photos: ["7l67UyO", "6OhT4zj"]
+            },
+            {
+                id: "discussionsofthemoon",
+                href: "discussionsofthemoon.html",
+                fragment: "Neither of us had our phones and so we just had to sit with the fact that there was no way to capture it.",
+                photos: ["O7UpHTp", "op9AjvQ", "pdeuiQE", "1anuyBP", "SyVq2mg"]
+            },
+            {
+                id: "weirdness",
+                href: "weirdness.html",
+                fragment: "When I stopped resisting I was being guided through the thick, vibrant, coral city.",
+                photos: ["5lyzA0v", "lb1KWX2", "cB2WfsH", "zvELYbW", "t1iWiqL"]
+            },
+            {
+                id: "return",
+                href: "return.html",
+                fragment: "I declared it good enough and I returned to my hammock.",
+                photos: ["ZiQeL5B", "iHL6Bks", "XCM69Cw", "VMz3GoW"]
+            },
+            {
+                id: "eels",
+                href: "eels.html",
+                fragment: "I smiled and thought to myself: holy shit, where am I?",
+                photos: ["Tubp78s", "2fqSF7X", "WreYGRg", "cb7ic74", "mrd3pmy", "pJB7ZXu", "T4SOhNP", "igIdxza"]
+            },
+            {
+                id: "bulletpoints",
+                href: "bulletpoints.html",
+                fragment: "I have never been so happy for a tardy French man before.",
+                photos: ["0lES958", "AJBmAIP", "UItMb8k", "gETr4YL", "5HBsdHj", "9195jZP", "Ld6KfK0", "LlhOSsj", "kMljqOm", "ZfvXi3s"]
+            },
+            {
+                id: "wwyd",
+                href: "wwyd.html",
+                fragment: "The Lemon Sharks were back. We became good friends — I didn’t have much of a choice.",
+                photos: ["pUlSilb", "UFEQ5VP", "T8qXt2o", "4RuxhtB", "Gv8UsgK", "cw4s5Bn", "V1veGDo"]
+            },
+            {
+                id: "pig",
+                href: "pig.html",
+                fragment: "But no pig! What happened to it? Add this to the many mysteries of life.",
+                photos: ["7tRTp3L", "a6Hy0Km", "1LBHJEP", "9shTtTa", "qtZIc5h", "4EauFwl", "NWdOO6q"]
+            }
+        ];
 
-function changeSlide(direction) {
-    images[currentSlide].style.display = 'none';
-    currentSlide = (currentSlide + direction + total) % total;
-    images[currentSlide].style.display = 'block';
-    document.getElementById('slideCounter').textContent = (currentSlide + 1) + ' / ' + total;
-}
-</script>
+        // Photos that should always stack on top when they overlap others
+        var BRING_TO_FRONT = { "9shTtTa": true, "cb7ic74": true };
+
+        // Extra breathing room (in viewport heights) after specific photos,
+        // so the one following them can emerge fully into open space.
+        var EXTRA_SPACE = { "cb7ic74": 0.4 };
+
+        var PHOTO_SPACING = 0.65;   // scroll distance between photos, in viewport heights
+        var FRAGMENT_SPACE = 0.85;  // room each drifting line gets to itself
+        var GROUP_PAUSE = 0.7;      // quiet stretch after a group ends
+
+        var stage = document.getElementById("stage");
+        var track = document.getElementById("track");
+        var hint = document.getElementById("hint");
+
+        var items = [];      // everything that moves: photos and fragments
+        var anchors = {};    // group id -> scroll position, for deep links
+        var cursor = 0.35;
+        var n = 0;
+
+        groups.forEach(function (group) {
+            // The drifting line that opens the group
+            var frag = document.createElement("a");
+            frag.className = "fragment";
+            frag.href = group.href;
+            frag.textContent = "“" + group.fragment + "”";
+            stage.appendChild(frag);
+
+            anchors[group.id] = cursor;
+            items.push({ el: frag, trigger: cursor, speed: 0.85 });
+            cursor += FRAGMENT_SPACE;
+
+            // The photos
+            group.photos.forEach(function (id) {
+                var a = document.createElement("a");
+                a.href = group.href;
+                a.title = "from this story";
+
+                var img = document.createElement("img");
+                img.src = "https://i.imgur.com/" + id + ".jpeg";
+                img.alt = "";
+                img.loading = "lazy";
+                a.appendChild(img);
+
+                // Deterministic variety
+                var widthPct = 34 + ((n * 11) % 5) * 7;        // 34% – 62% of stage width
+                var leftPct = [4, 52, 22, 44, 10, 36][n % 6];  // wander left/right
+                var speed = 1 + (((n * 7) % 5) - 2) * 0.12;    // 0.76 – 1.24
+
+                a.style.width = widthPct + "%";
+                a.style.left = leftPct + "%";
+                if (BRING_TO_FRONT[id]) a.style.zIndex = 10;
+
+                stage.appendChild(a);
+                items.push({ el: a, trigger: cursor, speed: speed });
+
+                cursor += PHOTO_SPACING + (EXTRA_SPACE[id] || 0);
+                n++;
+            });
+
+            cursor += GROUP_PAUSE;
+        });
+
+        function layout() {
+            var vh = window.innerHeight;
+            track.style.height = ((cursor + 1.5) * vh) + "px";
+            render();
+        }
+
+        function render() {
+            var vh = window.innerHeight;
+            var y = window.scrollY;
+
+            items.forEach(function (p) {
+                var delta = (p.trigger * vh - y) * p.speed;
+                var top = vh * 0.5 + delta;
+
+                if (top < -vh * 1.5 || top > vh * 2.5) {
+                    p.el.style.opacity = 0;
+                    return;
+                }
+
+                p.el.style.transform = "translateY(" + (top - vh * 0.35) + "px)";
+
+                var fadeIn = Math.min(1, Math.max(0, (vh * 1.1 - top) / (vh * 0.35)));
+                var fadeOut = Math.min(1, Math.max(0, (top + vh * 0.45) / (vh * 0.4)));
+                p.el.style.opacity = Math.min(fadeIn, fadeOut);
+            });
+
+            hint.style.opacity = y > vh * 0.3 ? 0 : 1;
+        }
+
+        // Deep links: gallery.html#eels lands on that group's opening line.
+        function goToHash() {
+            var id = location.hash.replace("#", "");
+            if (anchors[id] !== undefined) {
+                window.scrollTo(0, anchors[id] * window.innerHeight);
+            }
+        }
+
+        var ticking = false;
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(function () { render(); ticking = false; });
+            }
+        }, { passive: true });
+        window.addEventListener("resize", layout);
+        window.addEventListener("hashchange", goToHash);
+
+        layout();
+        goToHash();
+    </script>
+</body>
+</html>
